@@ -1,29 +1,45 @@
 use std::io;
 
+// Print the value of argument x
 fn argument_function(x: u128) {
     println!("You have entered: {x}");
 }
 
+// Example for an interactive CLI program
 fn interactive_argument() {
+    // Start a loop
     loop {
         println!("Please enter a number.");
 
+        // Create a mutable var number, which is
+        // a user-defined string
         let mut number = String::new();
 
+        // Read from standard input
+        // Set var number to whatever was typed
+        // Error if unable to read from stdin, shouldn't happen
+        // on a healthy OS
         io::stdin()
             .read_line(&mut number)
             .expect("Failed to read line");
 
+        // Set number to type u128
+        // If number is actually a number type, succeed
+        // If it's not, repeat loop
         let number: u128 = match number.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
 
+        // Call function with value of number
+        // and break the loop
         argument_function(number);
         break;
     }
 }
 
+// A function which compiles, but errors
+// if you enter an index that doesn't exist
 fn invalid_array() {
     let a = [1, 2, 3, 4, 5];
 
@@ -53,6 +69,7 @@ fn hi() {
     println!("{c} {z} {heart_eyed_cat}");
 }
 
+// Tuple test function
 fn ttest() {
     let x: (i128, f32, u8) = (5000000325983483859389243, 6.2389413, 255);
 
@@ -61,6 +78,7 @@ fn ttest() {
     println!("testjlkcjlkdsglk {float}");
 }
 
+// Aray test function
 fn array_test() {
     let x: [i64; 4] = [1, 2, 9, 12309123];
 
@@ -69,6 +87,7 @@ fn array_test() {
     println!("{a}");
 }
 
+// Main function
 fn main() {
     let x = 10;
     
